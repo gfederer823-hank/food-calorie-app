@@ -9,6 +9,7 @@ const withPWA = nextPWA({
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  turbopack: {}, // ⭐ 加這行
 };
 
 export default withPWA(nextConfig);
