@@ -165,7 +165,7 @@ const res = await fetch("/api/analyze", {
 const data = await res.json();
 
 if (data.error) {
-  setError("AI 回傳格式不符合預期");
+  setError(String(data.error)) //直接把後端回的錯誤顯示出來;
   return;
 }
 
