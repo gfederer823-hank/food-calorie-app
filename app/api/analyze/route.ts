@@ -31,7 +31,7 @@ fat_g:脂肪克數
             },
             {
               type: "input_image",
-              image_url: image
+              image_url: imageUrl, detail: "auto"
             }
           ]
         }
