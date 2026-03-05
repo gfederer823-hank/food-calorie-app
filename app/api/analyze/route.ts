@@ -10,7 +10,7 @@ export async function POST(req: Request) {
   try {
 
     const body = await req.json();
-    const image = body.image;
+    const imageUrl = body.imageUrl;
 
     const response = await openai.responses.create({
       model: "gpt-4.1-mini",
