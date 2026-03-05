@@ -164,14 +164,14 @@ const res = await fetch("/api/analyze", {
 
 const data = await res.json();
 
-const result = data.result;
-const norm = normalizeResult(result);
-if (!norm) {
+if (data.error) {
   setError("AI 回傳格式不符合預期");
   return;
 }
 
-      setParsed(norm);
+const obj = data.result;
+
+setParsed(obj);
     } catch (e: any) {
       setError("呼叫 AI 失敗（可能網路或伺服器問題）");
     } finally {
