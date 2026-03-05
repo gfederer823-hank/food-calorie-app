@@ -34,8 +34,7 @@ function safeParseJSON(text: string): FoodResult | null {
       return JSON.parse(trimmed);
     }
 
-    // 2) 可能包在 
-json ... 
+    // 2) 可能包在 json ... 
 
     const codeBlockMatch = trimmed.match(/```(?:json)?\s*([\s\S]*?)\s*```/i);
     if (codeBlockMatch?.[1]) {
