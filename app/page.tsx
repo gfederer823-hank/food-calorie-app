@@ -156,28 +156,20 @@ export default function Page() {
 
     setBusy(true);
     try {
-      const res = await fetch("/api/analyze", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ imageUrl: imageDataUrl }),
-      });
+const res = await fetch("/api/analyze", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ imageUrl: imageDataUrl }),
+});
 
-      const data = await res.json();
+const data = await res.json();
 
-      if (!res.ok) {
-        setError(data?.error || "API 失敗");
-        return;
-      }
-
-      const text = String(data?.result ?? "");
-      setRawAI(text);
-
-      const j = safeParseJSON(text);
-      const norm = normalizeResult(j);
-      if (!norm) {
-        setError("AI 回傳格式不符合預期（不是有效 JSON）。你可以把 Raw 內容貼給我，我幫你調 prompt。");
-        return;
-      }
+const result = data.result;
+const norm = normalizeResult(result);
+if (!norm) {
+  setError("AI 回傳格式不符合預期");
+  return;
+}
 
       setParsed(norm);
     } catch (e: any) {
